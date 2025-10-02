@@ -1,0 +1,11 @@
+CREATE OR REPLACE FUNCTION get_employee_count_by_date(p_hire_date DATE)
+RETURNS INTEGER AS $$
+DECLARE
+  v_count INTEGER;
+BEGIN
+  SELECT COUNT(*) INTO v_count
+  FROM employees
+  WHERE hire_date >= p_hire_date;
+  RETURN v_count;
+END;
+$$ LANGUAGE plpgsql;
